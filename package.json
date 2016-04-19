@@ -1,0 +1,36 @@
+{
+  "name": "PL_practica2",
+  "version": "1.0.0",
+  "description": "Analizador de cadenas csv usando AJAX",
+  "main": "csv.js",
+  "scripts": {
+    "test": "firefox tests/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EleDiaz/csv-pract-2"
+  },
+  "keywords": [
+    "csv"
+  ],
+  "author": "EleAndDani",
+  "contributors": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EleDiaz/csv-pract-2/issues"
+  },
+  "homepage": "https://github.com/EleDiaz/csv-pract-2",
+  "dependencies": {
+	"jquery": "*",
+    "underscore": "*",
+	"express": "~3.2.6",
+    "ejs": "*",
+    "body-parser": "~1.12.0",
+    "express-ejs-layouts": "~1.1.0"
+  },
+  "engines": {
+    "node": "4.4.3"
+  },
+  "devDependencies": {
+  }
+}
