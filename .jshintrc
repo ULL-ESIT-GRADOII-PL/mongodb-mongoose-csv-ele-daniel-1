@@ -1,0 +1,71 @@
+{
+
+  // Enforcing options
+
+  "bitwise": true, // true = flag bitwise operators which is probably a mistake
+  "camelcase": true, // true = require camelCase for all variable names
+  "curly": true, // require curly brackets, even for blocks with only one statement
+  "eqeqeq": true, // flag '==' and '!=' operators, in favor of '===' and '!=='
+  // "es3": false, // ecmascript support spec, not sure what this should be
+  "forin": true, //  requires all for in loops to filter object's items
+  "freeze": true, // prohibits overwriting prototypes of native objects
+  "immed": true, // true = prohibits the use of immediate function invocations without wrapping them in parentheses
+  "indent": 2, // require strict indention
+  "latedef": true, // require defining a variable before it is used
+  "newcap": true, // require capitalization for names of constructor functions
+  "noarg": true, // prohibits the use of arguments.caller and arguments.callee
+  "noempty": true, // prohibits empty blocks
+  "nonbsp": true, // warns about "non-breaking whitespace" characters
+  "nonew": true, // prohibits the use of constructor functions for side-effects
+  "plusplus": false, // true = prohibits the use of unary ++ and -- operators
+  "quotmark": true, // true = flags mixed quotes '' ""
+  "undef": true, // true = flag undefined variables
+  "predef": [ // declare globals to consider as defined, other than those defined in Environment section
+    "_",
+    "App"
+  ],
+  "unused": true, // true = flag unused variables
+  "strict": true, // true = require 'use strict'
+  "trailing": true, // true = forbit trailing whitespace
+  "maxparams": 3, // maximum number of function parameters, not sure what the benefit here would be
+  "maxdepth": 2, // max nesting depth, may relax later
+  "maxstatements": 25, // max number of statements per function
+  "maxcomplexity": 5, // set max cyclomatic complexity
+  "maxlen": 140, // max line length, dont really like this one much, going big
+
+  // Relaxing options
+
+  "asi": false,   // true = don't require semicolons
+  "boss": false, // true =  suppress warnings about the use of assignments in cases where comparisons are expected
+  "undef": false, // true = flag all undefined variables that are not [explain]
+  "debug": false, // true = ignore "debugger" statements, I never user this
+  "eqnull": false, // true = suppresses warnings about == null comparisons, doesn't seem to work
+  "esnext": false, // true = tells JSHint that your code uses ECMAScript 6 specific syntax
+  "evil": false, // true = suppress 'eval' warnings, I never use it
+  "expr": false, // true =  suppresses warnings about the use of expressions where normally you would expect to see assignments or function calls
+  "funcscope": false, // true = suppresses warnings about accessing variables defined out of scope
+  "gcl": true, // true = compatible with Google Closure Compiler
+  "globalstrict": false, // true = suppress global var warnings, being ignored?
+  "iterator": false, // true = suppresses warnings about the __iterator__ property
+  "lastsemic": false, // true = suppresses warnings about missing semicolons for the last statement in a one-line block
+  "laxbreak": false, // true = suppresses most of the warnings about possibly unsafe line breakings in your code
+  "laxcomma": false, // true =  suppresses warnings about comma-first coding style
+  "loopfunc": false, // true = suppresses warnings about defining functions inside of loops
+  "maxerr": 25, // set the maximum amount of warnings for jshint
+  "moz": false, // true = tells JSHint that your code uses Mozilla JavaScript extensions
+  "multistr": false, // true = suppresses warnings about multi-line strings
+  "notypeof": false, // true = suppresses warnings about the use of script-targeted URLs
+  "proto": false, // true = suppresses warnings about the __proto__ property
+  "scripturl": false, // suppresses warnings about the use of script-targeted URLs—such as javascript:....
+  "smarttabs": false, // true = suppresses warnings about mixed tabs and spaces
+  "shadow": false, // true = suppresses warnings about variable shadowing
+  "sub": false, // true = suppresses warnings about using [] notation when it can be expressed in dot notation
+  "supernew": false, // true = suppresses warnings about "weird" constructions
+  "validthis": false, // true = suppresses warnings about possible strict violations
+  "noyield": false, // true = suppresses warnings about generator functions with no yield statement in them
+
+  // Environments
+  "browser": true,
+  "devel": true,
+  "jquery": true
+}
