@@ -1,4 +1,5 @@
 /* jshint  esversion: 6 */
+'use strict';
 
 var express = require('express');
 var app = express();
