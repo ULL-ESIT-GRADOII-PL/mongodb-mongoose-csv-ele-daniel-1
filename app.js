@@ -15,7 +15,7 @@ app.use(expressLayouts);
 
 app.use(express.static(__dirname + '/public'));
 
-let server = require('./models/server.js');
+var server = require('./models/server.js');
 var calculate = require('./models/calculate');
 
 app.get('/', (request, response) => {
@@ -33,7 +33,7 @@ app.get('/csv', (request, response) => {
  * Se devuelve una lista de csv guardados con ese usuario
  */
 app.get('/users/:id', (request, response) => {
-    let csv = new server.CsvModel();
+    let csv = new server();
     response.send({ 'listExamples': csv.getCsvList(request.params.id) });
 });
 
@@ -42,7 +42,7 @@ app.get('/users/:id', (request, response) => {
  */
 app.get('/csvfile', (request, response) => {
     let req = request.query;
-    let csv = new server.CsvModel();
+    let csv = new server();
     response.send({'csvfile': csv.loadCsv(request.setAttributeNode(req.user, req.name))});
 });
 

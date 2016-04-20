@@ -1,8 +1,7 @@
 /* jshint  esversion: 6 */
+'use strict';
 
-let mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost/csv');
+var mongoose = require('mongoose');
 
 let Schema = mongoose.Schema;
 
@@ -34,10 +33,12 @@ class CsvModel {
                 console.log(err);
             }
         });
+        this.disconect();
     }
 
     getCsvList(user) {
         this.Csv.find({ username: user });
+        this.disconect();
     }
 
     /*
@@ -45,12 +46,13 @@ class CsvModel {
      */
     loadCsv(user, name) {
         let result = -1;
-        this.Csv.find( { username: user, nameSave: name }, (err, filecsv) => {
+        this.Csv.findOne( { username: user, nameSave: name }, (err, selected) => {
             if (err) {
                 console.log(`No found: ${user} --- ${name} --- ${err}`);
             }
-            result = filecsv;
+            result = selected.csv;
         });
+        this.disconect();
         return result;
     }
 }
