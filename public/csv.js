@@ -1,6 +1,16 @@
 // See http://en.wikipedia.org/wiki/Comma-separated_values
+/* global $ _ localStorage */
 (() => {
 "use strict"; // Use ECMAScript 5 strict mode in browsers that support it
+
+const buttonsCsv = `
+<div class="contenido">
+    <% _.each(csvFiles, (csvfile) => { %>
+        <button class="btn-load" type="button"><%= csvfile %></button>
+    <% }); %>
+</div>
+`;
+
 
 const resultTemplate = `
 <div class="contenido">
@@ -16,6 +26,74 @@ const resultTemplate = `
   </p>
 </div>
 `;
+
+
+class App {
+  constructor() {
+    this.getCSVs();
+
+    $('#saveBtn').click(() => {
+       this.saveCSVWithName($('#fileName').val());
+       $('#fileName').val('');
+       this.getCSVs();
+    });
+  }
+  
+  /**
+   * Fill file buttons in html, this buttons represents files in db to load
+   * its get array of name
+   */
+  fillFileButtons(csvFiles) { // [String] -> IO ()
+    $('#specific_buttons').html(_.template(buttonsCsv, { csvFiles: csvFiles}));
+  }
+  
+  /**
+   * Fill csvTable in html section final table
+   * its get Object with rows
+   */
+  fillTable(data) { // { rows: [{??? status: ??? }] } -> IO ()
+    $("#finaltable").html(_.template(resultTemplate, { rows: data.rows })); 
+  };
+  
+  /**
+   * Get CSVs tables from server a fill table
+   */
+  getCSVs() { // IO ()
+    $.get('/getCsvs', {}, (data) => {
+      console.log("mis datos" + data.csvFiles);
+      this.fillFileButtons(data.csvFiles);
+    }, 'json')
+    .done(() => { // Debemos actualizar los handlers de evento
+      $('button.btn-load').each((ix,elem) => {
+        console.log("pufff")
+        $(elem).click(() => {
+          console.log($(elem).html());
+          this.getCSVFile($(elem).html());
+        });
+      })
+    });
+  };
+  
+  /**
+   * Load CSV from server
+   */
+   getCSVFile(filename) {
+     $.get('/getCsvfile', { csvfile: filename }, (data) => {
+       console.log(data);
+       $("#original").val(data.content);
+     }, 'json');
+   }
+  
+  /**
+   * save a value with a specified name and take data(csv contents) from html
+   * and save over db
+   */
+  saveCSVWithName(name) { // String -> IO ()
+    let data = $("#original").val();
+    $.get('/sendCsvfile', {name: name, csv: data}, 'json');
+  };
+}
+
 
 /* Volcar la tabla con el resultado en el HTML */
 const fillTable = (data) => { 
@@ -83,6 +161,8 @@ $(document).ready(() => {
    $('button.example').each( (_,y) => {
      $(y).click( () => { dump(`${$(y).text()}.txt`); });
    });
+
+    new App();
 
     // Setup the drag and drop listeners.
     //var dropZone = document.getElementsByClassName('drop_zone')[0];

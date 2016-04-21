@@ -15,7 +15,7 @@ app.use(expressLayouts);
 
 app.use(express.static(__dirname + '/public'));
 
-var server = require('./models/server.js');
+var MongoDb = require('./models/mongodb.js');
 var calculate = require('./models/calculate');
 
 app.get('/', (request, response) => {
@@ -30,20 +30,36 @@ app.get('/csv', (request, response) => {
 });
 
 /*
- * Se devuelve una lista de csv guardados con ese usuario
+ * Se devuelve una lista de csv guardados
  */
-app.get('/users/:id', (request, response) => {
-    let csv = new server();
-    response.send({ 'listExamples': csv.getCsvList(request.params.id) });
+app.get('/getCsvs', (request, response) => {
+    let csv = new MongoDb();
+    csv.getCsvList().then((value) => {
+        console.log(value);
+        response.send({ 'csvFiles': value });
+    });
 });
 
 /*
  * Se obtiene el csv apartir de una peticion del cliente mediante ajax
  */
-app.get('/csvfile', (request, response) => {
+app.get('/getCsvfile', (request, response) => {
+    let csv = new MongoDb();
+    csv.loadCsv(request.query.csvfile)
+        .then((value) => {
+            response.send({'content': value});
+        });
+});
+
+/*
+ * Se envia un csv
+ */
+app.get('/sendCsvfile', (request, response) => {
     let req = request.query;
-    let csv = new server();
-    response.send({'csvfile': csv.loadCsv(request.setAttributeNode(req.user, req.name))});
+    let csv = new MongoDb();
+    console.log("sendCsvfile: " + req.name + "  " + req.csv) ;
+    csv.saveCsvInDb(req.name, req.csv);
+    response.send({'status': "ok"});
 });
 
 app.listen(app.get('port'), () => {

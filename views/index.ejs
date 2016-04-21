@@ -1,11 +1,18 @@
   <div class="contenido_total">
     <div class="titulo_practica">
-      <h1 align="center">
-        <font color="blue">Comma Separated Values (CSV) Analyzer with Ajax</font>
+      <h1 class="title">
+        Comma Separated Values (CSV)
       </h1>
       <hr>
     </div>
     <div class="contenido">
+      <div class="left">
+        <h2>Usuario</h2>
+        <button id="saveBtn" type="button">Save</button>
+        <input id="fileName" class="save" type="text" name="fname">
+        <div id="specific_buttons">
+        </div>
+      </div>
       <table class="center" id="input">
         <tr><th>Escriba aquí una entrada CSV o bien</th></tr>
         <tr><th>Arrastre un fichero CSV hasta la zona de entrada</th></tr>
@@ -36,7 +43,6 @@
           </th>
         </tr>
       </table>
-
       <div class="output" id="finaltable">
       </div>
     </div>

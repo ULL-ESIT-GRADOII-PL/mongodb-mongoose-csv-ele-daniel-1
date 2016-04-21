@@ -3,12 +3,13 @@
 (() => {
 "use strict";
 
-const regexp = /((?:[^"\\]\\.)*)"|([^,\s]+)|,\s*(?=,|$)|^\s*,/g;
-let calculate = (original) => {
+const regexp = /"((?:[^"\\]|\\.)*)"|([^,\s]+)|,\s*(?=,|$)|^\s*,/g;
+
+let calculate = (original)=> {
     let lines = original.split(/\n+\s*/);
     let commonLength;
 
-    if (lines) {
+    if (lines === []) {
       commonLength = 0;
     }
     else {
@@ -34,14 +35,15 @@ let calculate = (original) => {
       if (m) {
         result = m.map(removeQuotes);
         error = (commonLength != m.length);
-        let rowclass = error? 'error' : 'legal';
+        let rowclass = error? 'error' : 'legal'; // vacio a legal
         r.push({ items: result, type: rowclass });
       }
       else {
-        let errmsg = 'La fila "' + temp + '" no es un valor de CSV permitido.';
-        r.push({items: errmsg.split("").splice(commonLength), type: 'error'});
-      }
+          let errmsg = 'La fila "' + temp + '" no es un valor de CSV permitido.';
+          r.push({items: errmsg.split("").splice(commonLength), type: 'error'});
+        }
     }
+    console.log(r);
     return r;
   };
 

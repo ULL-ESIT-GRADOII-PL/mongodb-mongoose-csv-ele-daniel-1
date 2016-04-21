@@ -1,15 +1,7 @@
 # Práctica 3: Comma separated values (CSV) with MongoDB
 
-TODO:
-- Hacer el esquema de la base de datos
-- Montar la base datos (configurar en general)
-- Hacer el enrutado correspondiente por usuario
-- Servir los archivos de ese usuario
+TODO: Mejorar el estilo visual de la applicacion
 
-- Mejorar el estilo visual de la app
-
-TODO:
-Schema
-  - Usuario
-    - csv
-    - Name
+Las Promises son útiles para el manejo de errores tiene bastante parecido a
+una [Monad](https://en.wikipedia.org/wiki/Monad_(functional_programming)) pero
+estas últimas son más abstractas y generalizadas.
