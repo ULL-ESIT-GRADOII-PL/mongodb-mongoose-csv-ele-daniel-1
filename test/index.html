@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mocha</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.4.5/mocha.min.css" />
+    </head>
+    <body>
+        <div id="mocha"></div>
+        <div id="messages"></div>
+        <div id="fixtures"></div>
+        <script type="text/html" id="fillTable">
+          <table id="result" class="center">
+            <% _.each(items, function(name) { %>
+              <tr class="<%= name.rowClass %>">
+                <% _.each(name.value, function(cell) { %>
+                  <td><%= cell %></td>
+                <% }); %>
+              </tr>
+            <% }); %>
+          </table>
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.4.5/mocha.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sinon.js/1.15.4/sinon.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/blanket.js/1.1.4/blanket.min.js"
+                data-cover-adapter="https://raw.githubusercontent.com/alex-seville/blanket/45a8d5fd69d7c53059c52db808f063070af44f53/src/adapters/mocha-blanket.js" data-cover-flags="debug"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+        <script src="../js/csv.js" data-cover></script>
+        <script src="../js/main.js" data-cover></script>
+        <script>
+         mocha.setup('bdd');
+        </script>
+        <script src="test.js"></script>
+        <script>
+         //mocha.checkLeaks();
+         mocha.run();
+        </script>
+    </body>
+</html>

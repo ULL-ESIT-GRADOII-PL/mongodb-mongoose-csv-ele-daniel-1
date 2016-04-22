@@ -1,0 +1,71 @@
+table.center {
+	font-weight: bold;
+	color: black;
+	text-align: center;
+
+	margin-left: 90px;
+	margin-top: 10px;
+	
+	border: ridge;
+	border-color: #723400;
+}
+
+.output tr:nth-child(odd)    { background-color:#eee; }
+.output tr:nth-child(even)   { background-color:#00FF66; }
+.error td{ background-color: red; }
+
+* {
+	background-color: white;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.title {
+	color: #723400;
+}
+
+p, h1, h2 {
+	color: #E2CBB9;
+}
+
+.title {
+    text-align:center;
+}
+
+.hide-elem .login_input {
+    display: none;
+}
+
+.btn-load {
+    
+    display: block;
+}
+
+.login, .login_input {
+    margin: 5px 5px 5px 5px;
+    display: block;
+    width: 200px;
+}
+
+button:hover {
+  background: #C69872;
+  text-decoration: none;
+}
+
+button {
+  display: inline-block;
+  margin: 0 5px 0 0;
+  padding: 0px 45px;
+  font-size: 14px;
+  font-family: "Bitter",serif;
+  line-height: 1.8;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 0;
+}

@@ -1,0 +1,49 @@
+  <div class="contenido_total">
+    <div class="titulo_practica">
+      <h1 class="title">
+        Comma Separated Values (CSV)
+      </h1>
+      <hr>
+    </div>
+    <div class="contenido">
+      <div class="left">
+        <h2>Usuario</h2>
+        <button id="saveBtn" type="button">Save</button>
+        <input id="fileName" class="save" type="text" name="fname">
+        <div id="specific_buttons">
+        </div>
+      </div>
+      <table class="center" id="input">
+        <tr><th>Escriba aquí una entrada CSV o bien</th></tr>
+        <tr><th>Arrastre un fichero CSV hasta la zona de entrada</th></tr>
+        <tr>
+          <th>
+            <textarea class = "drop_zone" autofocus="" cols = "80" rows = "5" id="original"></textarea>
+          </th>
+          <th>
+            <button type="button" id="parse"> Analizar!</button>
+          </th>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+          <th>
+            <div class="example">
+              Click para cargar ejemplos:
+              <button class ="example" type="button">input</button>
+              <button class ="example" type="button">input2</button>
+              <button class ="example" type="button">input3</button>
+            </div>
+          </th>
+        </tr>
+        <tr>
+          <th>
+              Cargar archivo: 
+              <input type="file" class="inputfile" />
+          </th>
+        </tr>
+      </table>
+      <div class="output" id="finaltable">
+      </div>
+    </div>
+  </div>
