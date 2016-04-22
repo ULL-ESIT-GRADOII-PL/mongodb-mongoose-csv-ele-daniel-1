@@ -33,9 +33,11 @@ class App {
     this.getCSVs();
 
     $('#saveBtn').click(() => {
-       this.saveCSVWithName($('#fileName').val());
-       $('#fileName').val('');
-       this.getCSVs();
+      this.saveCSVWithName($('#fileName').val())
+      .done(()=> { // Esperamos por los datos entonces se actualiza
+        $('#fileName').val('');
+        this.getCSVs();
+      });
     });
   }
   
@@ -90,7 +92,7 @@ class App {
    */
   saveCSVWithName(name) { // String -> IO ()
     let data = $("#original").val();
-    $.get('/sendCsvfile', {name: name, csv: data}, 'json');
+    return $.get('/sendCsvfile', {name: name, csv: data}, 'json');
   };
 }
 
